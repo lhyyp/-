@@ -1,0 +1,4 @@
+/* pages/product/product.wxss */
+.box{
+  background: red;
+}

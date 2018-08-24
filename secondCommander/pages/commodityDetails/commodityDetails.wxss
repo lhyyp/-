@@ -1,0 +1,23 @@
+/* pages/commodityDetails/commodityDetails.wxss */
+.content{
+  font-size: 28rpx;
+  background: #f5f5f5;
+}
+image.slide-image{
+  display: block;
+  width:750rpx;
+}
+.text{
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 10rpx;
+  background: #ffffff;
+}
+.qualityMessage{
+  display: flex;
+  justify-content: space-between;
+  padding:  10rpx;
+  color: grey;
+  background: #ffffff;
+  
+}

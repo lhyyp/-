@@ -1,0 +1,52 @@
+<!--pages/homepage/homepage.wxml-->
+ <scroll-view scroll-y style="height: {{windowHeight}}px;"  bindscrolltolower="loderMoer" >
+  <swiper-tag-name></swiper-tag-name>
+  <view  class='ClassificationList'>
+      <view class='ClassificationItem' wx:for="{{ClassificationList}}" wx:for-item='Classification' data-url='{{Classification.id}}' data-title='{{Classification.product_name}}' bindtap='goDetail'>
+        <image src="../../static/images/{{Classification.src}}"></image>
+        <view>{{Classification.product_name}}</view>
+      </view>
+  </view>
+  <view class='br'></view>
+  <!-- 直兑精品 -->
+  <view class="qualityContent"> 
+    <view class="qualityTitle">
+      <text class='more'>　　</text>
+      <text class='h2'>直兑精品</text>
+      <text class='more' bindtap='goDetail' data-url='1' data-title='精品直兑'>更多</text>
+    </view> 
+    <view class='box'>
+      <scroll-view class='qualityList' scroll-x>
+        <view class='qualityItem' wx:for="{{qualityList}}" wx:for-item='quality' data-id='{{quality.id}}' bindtap='commodityDetails'>
+          <image src="../../static/images/{{quality.productSrc[0]}}"></image>
+          <view class='text'>{{quality.productIntroduce}}</view>
+          <view>{{quality.producttPrices}}元</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 人气推荐 -->
+  <view>
+    <view class="recommendation">
+      <text class='h2'>人气推荐</text>
+      <text class='text'>明星商品 为您精选</text>
+    </view>
+    <view class='recommendationList' wx:for="{{recommendationList}}" wx:for-item='recommendation' data-id='{{recommendation.id}}'  bindtap='commodityDetails'>
+      <image src="../../static/images/{{recommendation.productSrc[0]}}"></image>
+      <view class='text'>{{recommendation.productIntroduce}}</view>
+      <view class='qualityMessage'>
+        <text>￥ {{recommendation.producttPrices}}元</text>
+        <text>已售 {{recommendation.beastNum}}</text>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+
+
+  </scroll-view>
+

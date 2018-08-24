@@ -1,0 +1,122 @@
+/* pages/homepage/homepage.wxss */
+.ClassificationList{
+  overflow: hidden;
+  padding-top: 40rpx;
+}
+.ClassificationItem{
+  float: left;
+  width: 187.5rpx;
+  height: 220rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+}
+.ClassificationItem image{
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  margin:15rpx auto;
+}
+.ClassificationItem view{
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.br{
+  height: 20rpx;
+  background: #f5f5f5;
+  width: 100%;
+}
+.qualityTitle{
+  display: flex;
+  height: 60rpx;
+  padding-top:30rpx; 
+  
+}
+.qualityTitle .h2{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34rpx;
+}
+.qualityTitle .more{
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}
+.box{
+  margin-top: 30rpx;
+}
+.qualityList{
+  width: 100%;
+  white-space: nowrap;
+}
+.qualityItem{
+  display: inline-block;
+  margin-left: 15rpx;
+  width: 200rpx;
+  height: 350rpx;
+  font-size: 28rpx;
+}
+.qualityItem image{
+  width: 180rpx;
+  height: 180rpx;
+  display: block;
+  margin: 0 auto;
+}
+.qualityItem view{
+  margin: 10rpx auto;
+  line-height: 40rpx;
+  width: 180rpx;
+}
+.qualityItem .text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+}
+.recommendation{
+  display: flex;
+  height: 60rpx;
+  padding-top:30rpx;
+}
+.recommendation .h2{
+  flex:1;
+  padding-left: 40rpx;
+  font-size: 34rpx;
+}
+.recommendation .text{
+  font-size: 28rpx;
+  padding: 0 20rpx;
+}
+.recommendationList{
+  width: 100%;
+  height: 720rpx;
+  font-size: 28rpx;
+  padding: 40rpx 0 0;
+
+}
+.recommendationList image{
+  width: 100%;
+  height: 600rpx;
+  display: block;
+  margin: 0 auto;
+}
+.recommendationList view{
+  margin: 10rpx auto;
+  line-height: 50rpx;
+  width: 730rpx;
+}
+.recommendationList .text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+}
+.qualityMessage{
+  display: flex;
+  justify-content: space-between;
+}

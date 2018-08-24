@@ -1,0 +1,16 @@
+<!--pages/commodityDetails/commodityDetails.wxml-->
+<view class='content'>
+  <swiper indicator-dots  indicator-color="#fff"   indicator-active-color="#f4ea2a" autoplay interval="2000" duration="500" circular>
+    <block wx:for="{{CommodityDetailsList[0].productSrc}}" wx:for-item='productSrc'>
+      <swiper-item>
+        <image src="../../static/images/{{productSrc}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='text'>{{CommodityDetailsList[0].productIntroduce}}</view>
+   <view class='qualityMessage'>
+      <text>￥ {{CommodityDetailsList[0].producttPrices}}元</text>
+      <text>已售 {{CommodityDetailsList[0].beastNum}}</text>
+    </view>
+
+</view>

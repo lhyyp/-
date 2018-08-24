@@ -1,0 +1,5 @@
+/* components/swiper/seiper.wxss */
+image.slide-image{
+  display: block;
+  width:750rpx;
+}

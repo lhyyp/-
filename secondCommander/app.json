@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/homepage/homepage",
+    "pages/commodityDetails/commodityDetails",
+    "pages/index/index",
+    "pages/user/user",
+    "pages/logs/logs",
+    "pages/ShoppingCart/ShoppingCart",
+    "pages/product/product"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "小泽又沐风",
+    "navigationBarTextStyle":"#fffff"
+  },
+  "tabBar": {
+      "color": "#666",
+      "selectedColor": "#f4ea2a",
+      "borderStyle": "black ",
+    "list": [
+      {
+        "pagePath": "pages/homepage/homepage",
+        "text": "首页",
+        "iconPath": "./static/images/homepage.png",
+        "selectedIconPath": "./static/images/homepage_1.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "分类",
+        "iconPath": "./static/images/classification.png",
+        "selectedIconPath": "./static/images/classification_1.png"
+      },
+      {
+        "pagePath": "pages/ShoppingCart/ShoppingCart",
+        "text": "购物车",
+        "iconPath":"./static/images/ShoppingCart.png",
+        "selectedIconPath": "./static/images/ShoppingCart_1.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "./static/images/user.png",
+        "selectedIconPath": "./static/images/user_1.png"
+      }
+    ]
+  }
+}

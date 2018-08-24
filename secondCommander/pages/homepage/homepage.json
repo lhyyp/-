@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "swiper-tag-name": "../../components/swiper/swiper"
+  }
+}

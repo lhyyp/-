@@ -1,0 +1,10 @@
+<!--pages/product/product.wxml-->
+<view wx:if='{{qualityList.length>0}}'>
+  <view wx:for='{{qualityList}}' wx:for-item='qualityItem' >
+    <image src='../../static/images/{{qualityItem.productSrc[0]}}'></image>
+    <view>{{qualityItem.productIntroduce}}</view>
+    <view>￥ {{qualityItem.producttPrices}}</view>        
+  </view>
+</view>
+<view wx:elif='{{qualityList.length==0}}'>没有数据</view>
+
