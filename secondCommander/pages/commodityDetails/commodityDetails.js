@@ -19,7 +19,6 @@ Page({
         id: options.id
       })
     }
-    
     this.getCommodityDetails();
   },
   getCommodityDetails() {
@@ -41,4 +40,9 @@ Page({
       }
     })
   },
+  goShoppingCart(){
+    wx.switchTab({
+      url: "/pages/ShoppingCart/ShoppingCart",
+    })
+  }
 })

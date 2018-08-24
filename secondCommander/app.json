@@ -2,11 +2,14 @@
   "pages":[
     "pages/homepage/homepage",
     "pages/commodityDetails/commodityDetails",
+    "pages/classification/classification",
+    
+    "pages/product/product",
     "pages/index/index",
     "pages/user/user",
     "pages/logs/logs",
-    "pages/ShoppingCart/ShoppingCart",
-    "pages/product/product"
+    "pages/ShoppingCart/ShoppingCart"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -26,7 +29,7 @@
         "selectedIconPath": "./static/images/homepage_1.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/classification/classification",
         "text": "分类",
         "iconPath": "./static/images/classification.png",
         "selectedIconPath": "./static/images/classification_1.png"

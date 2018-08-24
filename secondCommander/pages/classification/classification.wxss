@@ -1,0 +1,35 @@
+/* pages/classification/classification.wxss */
+.title{
+  padding: 50rpx 0 20rpx;
+}
+.title view{
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+.title .text{
+  font-size: 40rpx;
+}
+.ClassificationList{
+  overflow: hidden;
+  padding-top: 40rpx;
+}
+.ClassificationItem{
+  float: left;
+  width: 187.5rpx;
+  height: 220rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+}
+.ClassificationItem image{
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  margin:15rpx auto;
+}
+.ClassificationItem view{
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}

@@ -1,10 +1,16 @@
 <!--pages/product/product.wxml-->
-<view wx:if='{{qualityList.length>0}}'>
-  <view wx:for='{{qualityList}}' wx:for-item='qualityItem' >
-    <image src='../../static/images/{{qualityItem.productSrc[0]}}'></image>
-    <view>{{qualityItem.productIntroduce}}</view>
-    <view>￥ {{qualityItem.producttPrices}}</view>        
+<scroll-view scroll-y style="height: {{windowHeight}}px;"  bindscrolltolower="loderMoer" >
+  <view wx:if='{{qualityList.length>0}}' class='qualityList'>
+    <view wx:for='{{qualityList}}' wx:for-item='qualityItem'  class="qualityItem" data-id='{{qualityItem.id}}' bindtap='commodityDetails'>
+      <image src='../../static/images/{{qualityItem.productSrc[0]}}'></image>
+      <view class='text'>{{qualityItem.productIntroduce}}</view>
+      <view>￥ {{qualityItem.producttPrices}}</view>        
+    </view>
   </view>
-</view>
-<view wx:elif='{{qualityList.length==0}}'>没有数据</view>
+  <view wx:elif='{{qualityList.length==0}}' class='notfind'>
+    <image src='../../static/images/notfind.png' ></image>
+    <view>暂无数据</view>
+  </view>
+</scroll-view>
+
 

@@ -1,0 +1,13 @@
+<!--pages/classification/classification.wxml-->
+<view>
+ <view class='title'>
+   <view class='text'>分类</view>
+   <view>CATEGORY</view>
+ </view>
+ <view  class='ClassificationList'>
+      <view class='ClassificationItem' wx:for="{{ClassificationList}}" wx:for-item='Classification' data-url='{{Classification.id}}' data-title='{{Classification.product_name}}' bindtap='goDetail'>
+        <image src="../../static/images/{{Classification.src}}"></image>
+        <view>{{Classification.product_name}}</view>
+      </view>
+  </view>
+</view>

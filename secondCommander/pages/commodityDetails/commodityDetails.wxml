@@ -8,9 +8,17 @@
     </block>
   </swiper>
   <view class='text'>{{CommodityDetailsList[0].productIntroduce}}</view>
-   <view class='qualityMessage'>
-      <text>￥ {{CommodityDetailsList[0].producttPrices}}元</text>
-      <text>已售 {{CommodityDetailsList[0].beastNum}}</text>
+  <view class='qualityMessage'>
+    <text>￥ {{CommodityDetailsList[0].producttPrices}}元</text>
+    <text>已售 {{CommodityDetailsList[0].beastNum}}</text>
+  </view> 
+ 
+  <!-- 底部的购买 -->
+  <view class='buyContent'>
+    <view class='ShoppingCartBtn' bindtap='goShoppingCart'>
+      <image src='../../static/images/ShoppingCart.png'></image>
     </view>
-
+    <view class='addShoppingCart'>加入购物车</view>
+    <view class='PurchaseBtn'>立即购买</view>
+  </view>
 </view>
