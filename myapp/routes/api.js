@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../libs/db.js');
+const fs = require('fs');
+const pathlib=require('path');
+const async =require("async")
 
 //产品banner
 router.get('/getbanner',(req,res)=>{
@@ -74,7 +77,200 @@ router.get('/getCommodityDetails',(req,res)=>{
 		res.json(data);	
     });
 })
+/**
 
+   商品详情
+   code  =>  商品code
+   
+*/
+router.get('/getProductInfo',(req,res)=>{
+  let code =  req.query.code ;
+  if(!code){
+    res.json({'status':0,'msg':'找不到该产品'});
+  }
+    db.select(`select * from product where code= ${code}`,(data)=>{
+        for(let i=0; i<data.length;i++){
+          data[i].productSrc=data[i].productSrc.split(',');
+        }
+      res.json(data); 
+    });
+})
+
+
+/**
+
+   加入购物车
+   code  =>  商品code
+   
+*/
+router.get('/addcart',(req,res)=>{
+  let data =  JSON.parse(req.query.data);
+  let openid =  req.query.openid ;
+  let qcode = data.code;
+  if(!openid){
+    res.json({'status':101,'msg':'请先登录'});
+  }
+  if(!data){
+    res.json({'status':0,'msg':'加入购物车失败'});
+  }
+  async.waterfall([
+       function(cb){
+          db.add(`select * from shoppingCart where openid= '${openid}' and qcode = ${qcode}`,(err,result)=>{
+            cb(err,result)
+          });
+       },
+       function(result,cb){
+        if(result.length>0){
+          db.add(`UPDATE shoppingCart SET number=${result[0].number+1} WHERE openid='${openid}' and qcode = ${qcode}`, (err,result)=>{
+            cb(err,result);
+          }) 
+        }else{
+          db.add(`insert into shoppingCart (openid,product_id,prices,qcode,number,productIntroduce) values ('${openid}',${data.id},'${data.producttPrices}','${data.code}',1,'${data.productIntroduce}')`,(err,result)=>{
+            cb(err,result);
+          }) 
+        }
+
+       }
+    ],function(err, data) {
+            if (err) {
+                console.log(err);
+                res.json({"status":5000,"msg":err.message});
+            } else {
+              res.json(data);
+            }
+        })
+  
+})
+
+  /**
+
+   购物车宝贝
+   openid  =>  用户id
+   
+*/ 
+
+router.get('/getShoppingCartlist',(req,res)=>{
+  let openid =  req.query.openid ;
+  db.select(`select * from shoppingCart where openid= '${openid}'`,(data)=>{
+    res.json(data); 
+  });
+
+})
+
+
+ /**
+
+   购物车宝贝
+   code =>
+   
+*/ 
+
+router.get('/reduce',(req,res)=>{
+  let openid =  req.query.openid ;
+  let qcode =  req.query.code ;
+  let act =  req.query.act ;
+   async.waterfall([
+       function(cb){
+          db.add(`select * from shoppingCart where openid= '${openid}' and qcode = ${qcode}`,(err,result)=>{
+            cb(err,result)
+          });
+       },
+       function(result,cb){
+        if(result.length>0){
+          if(act==0){
+            if(result[0].number>1){
+              db.add(`UPDATE shoppingCart SET number=${result[0].number-1} WHERE openid='${openid}' and qcode = ${qcode}`, (err,result)=>{
+                cb(err,result);
+              })
+            }else{
+               db.add(`DELETE FROM  shoppingCart  WHERE openid='${openid}' and qcode = ${qcode}`, (err,result)=>{
+                cb(err,result);
+              })
+            }
+          }else{
+            db.add(`UPDATE shoppingCart SET number=${result[0].number+1} WHERE openid='${openid}' and qcode = ${qcode}`, (err,result)=>{
+                cb(err,result);
+              })
+          }
+        }
+      }
+    ],function(err, data) {
+            if (err) {
+                console.log(err);
+                res.json({"status":5000,"msg":err.message});
+            } else {
+              res.json(data);
+            }
+        })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+router.get('/demo',(req,res)=>{
+  async.waterfall([
+      //A这件事
+      function(cb){
+          db.doSomething( function(err, dataA){
+              console.log(dataA);
+              cb(err, dataA);     //如果发生err， 则瀑布就完了，后续流程都不会执行，B和C都不会执行
+          });
+      },
+      //B这件事，dataA就是上一步cb(err, dataA)中传进来的dataA
+      function(dataA, cb){
+          db.doSomething(function(err, dataB){
+              console.log(dataB);
+              cb(err, dataA, dataB);  //如果发生err， 则瀑布就完了，后续流程都不会执行，C不会执行
+          });
+      },
+      //C这件事
+      function(dataA, dataB, cb){
+          db.doSomething(function(err, dataC){
+              console.log(dataC);
+              cb(err, dataA, dataB, dataC);
+          });
+      }
+  ], function (err, dataA, dataB, dataC) {    //瀑布的每一布，只要cb(err, data)的err发生，就会到这
+      if(err){
+          console.log('处理错误!');
+      }else{
+          console.log('处理成功！');
+          console.log(dataA);
+          console.log(dataB);
+          console.log(dataC);
+      }
+  });
+
+})
+
+
+
+
+//上传图片s
+router.post('/imgupload',function(req,res){
+   var imgPath={};
+       imgPath.oldpath=req.files[0].path;  //图片原名
+       imgPath.newpath=req.files[0].path+pathlib.parse(req.files[0].originalname).ext; //图片原名+后缀
+       imgPath.newFilename=req.files[0].filename+pathlib.parse(req.files[0].originalname).ext;
+
+    fs.rename(imgPath.oldpath,imgPath.newpath,function(err){
+              if(err){
+                res.json({'status':0,'msg':'图片重命名错误'});
+              }else{
+                 res.json(imgPath.newFilename); 
+              }
+            })
+   
+  
+})
 
 
 
