@@ -124,38 +124,20 @@ var selectAll = function (tableName, callBack) {
  * @param tableName 表名
  * @param callBack(err,recordset)
  */
-var add = function (addObj, tableName, callBack) {      //{id:3,userName:'admin'...}        insert into dbo.tags(id,name) values(@id,@name)
-    var ps = new mysql.PreparedStatement(connection);
-    var sql = "insert into " + tableName + "(";
-    if (addObj != "") {
-        for (var index in addObj) {
-            if (typeof addObj[index] == "number") {
-                ps.input(index, mysql.BigInt);
-            } else if (typeof addObj[index] == "string") {
-                ps.input(index, mysql.NVarChar);
-            } else if (typeof addObj[index] == "object") {
-                ps.input(index, mysql.DateTime);
+var add = function (Sql,callBack) {      //{id:3,userName:'admin'...}        insert into dbo.tags(id,name) values(@id,@name)
+   connection.query(Sql, function (err,data) {
+        if (err){
+            data={
+                status:0,
+                msg:err.message
             }
-            sql += index + ",";
+            callBack(null,data);
+        }else{
+           callBack(null,data);
         }
-        sql = sql.substr(0, sql.length - 1) + ") output inserted.* values(";
-        for (var index in addObj) {
-            sql = sql + "@" + index + ",";
-        }
-    }
-    sql = sql.substr(0, sql.length - 1) + ")";
-    console.log(sql);
-    ps.prepare(sql, function (err) {
-        if (err)
-            console.log(err);
-        ps.execute(addObj, function (err, recordset) {
-            callBack(err, recordset);
-            ps.unprepare(function (err) {
-                if (err)
-                    console.log(err);
-            });
-        });
-    });
+           
+     });
+    
 };
 
 /**
@@ -244,10 +226,11 @@ var del = function (whereSql, params, tableName, callBack) {
     });
 };
 
-//del("where id = @id",{id:16},"dbo.userTable",function(err,recordset){
-//    console.log(recordset);
-//});
+var doSomething=function(cb){
+    var num= Math.random()
+    cb(null, num);
 
+}
 //exports.initConfig = initConfig;
 exports.config = config;
 exports.del = del;
@@ -256,3 +239,4 @@ exports.update = update;
 exports.querySql = querySql;
 exports.selectAll = selectAll;
 exports.add = add;
+exports.doSomething = doSomething;
