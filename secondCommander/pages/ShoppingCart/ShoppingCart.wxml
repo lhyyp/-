@@ -1,2 +1,24 @@
 <!--pages/ShoppingCart/ShoppingCart.wxml-->
-<text>pages/ShoppingCart/ShoppingCart.wxml</text>
+<view>
+  <view wx:if='{{isShow==true}}' class='qualityList'>
+    <view wx:for='{{getlist}}' class='item' wx:for-index="index">
+      <checkbox class="checkbox" class='checkbox' checked='{{item.checked}}' bindtap="checkboxChange" data-index='{{index}}'/>
+      <view class='right'>
+        <view class='desc'>{{item.productIntroduce}}</view>
+        <view class='second'>
+          <view>￥{{item.prices}}</view>
+          <view class='third'>
+            <text class="btn" data-code='{{item.qcode}}' data-index='{{index}}' bindtap='reduce'>-</text>
+            <text class='number'>{{item.number}}</text>
+            <text  class="btn" data-code='{{item.qcode}}' data-index='{{index}}' bindtap='add'>+</text>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <view>总计:￥{{Statistics}}</view>
+  </view>
+  <view wx:elif='{{isShow==false}}' class='notfind'>
+    <image src='../../static/images/notfind.png' ></image>
+    <view>暂无数据</view>
+  </view>
+</view>

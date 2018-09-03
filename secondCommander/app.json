@@ -1,15 +1,14 @@
 {
   "pages":[
-    "pages/homepage/homepage",
+    "pages/ShoppingCart/ShoppingCart",
     "pages/commodityDetails/commodityDetails",
+    "pages/homepage/homepage",
+    "pages/photo/photo",
     "pages/classification/classification",
-    
     "pages/product/product",
     "pages/index/index",
     "pages/user/user",
-    "pages/logs/logs",
-    "pages/ShoppingCart/ShoppingCart"
-    
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",

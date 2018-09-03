@@ -18,7 +18,7 @@
     <view class='ShoppingCartBtn' bindtap='goShoppingCart'>
       <image src='../../static/images/ShoppingCart.png'></image>
     </view>
-    <view class='addShoppingCart'>加入购物车</view>
+    <view class='addShoppingCart' bindtap='addShoppingCart'>加入购物车</view>
     <view class='PurchaseBtn'>立即购买</view>
   </view>
 </view>

@@ -1,0 +1,5 @@
+<!--pages/photo/photo.wxml-->
+<button size='mini' bindtap='toCamera'>拍照</button>
+<image src="{{src}}"></image>
+<button size='mini' bindtap='upload'>上传</button>
+<button size='mini' bindtap='doCode'>扫码</button>

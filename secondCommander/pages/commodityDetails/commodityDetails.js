@@ -1,5 +1,6 @@
 // pages/commodityDetails/commodityDetails.js
 const host = getApp().globalData.host; 
+const helper = require('../../utils/helper.js');
 Page({
 
   /**
@@ -44,5 +45,9 @@ Page({
     wx.switchTab({
       url: "/pages/ShoppingCart/ShoppingCart",
     })
+  },
+  addShoppingCart(){
+    console.log(this.data.CommodityDetailsList)
+    helper.addcart(this.data.CommodityDetailsList[0])
   }
 })
