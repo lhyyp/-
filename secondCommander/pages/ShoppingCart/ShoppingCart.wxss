@@ -50,6 +50,9 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  border: 1px solid #8a8a8a;
+  border-radius: 40rpx;
+  margin: 0 10rpx;
 }
 .item .second{
   display: flex;

@@ -16,6 +16,16 @@ const helper = {
         })
       }
     })
+  },
+ remove:(arr, item)=>{
+    var newarr = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (i != item) {
+        newarr.push(arr[i]);
+      }
+      
+    }
+   return newarr;
   }
 }
 module.exports = helper;
